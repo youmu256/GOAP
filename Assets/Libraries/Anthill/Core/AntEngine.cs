@@ -93,13 +93,19 @@ namespace Anthill.Core
 			_entities.Remove(aEntity);
 			aEntity.OnRemovedFromEngine();
 		}
-
+		/// <summary>
+		/// 直接获取所有某个组件类型的Node
+		/// 用System来统一进行逻辑管理
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
 		public AntNodeList<T> GetNodes<T>()
 		{
 			var type = typeof(T);
 			AntFamily<T> family;
 			if (!_families.ContainsKey(type))
 			{
+				//初始化family 并且加入所有entity
 				family = new AntFamily<T>();
 				_families[type] = family;
 				for (int i = 0, n = _entities.Count; i < n; i++)

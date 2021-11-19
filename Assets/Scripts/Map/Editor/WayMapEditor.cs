@@ -61,7 +61,7 @@ namespace Game.Map
 				float s = HandleUtility.GetHandleSize(p) * 0.05f;
 				for (int i = 0, n = _self.wayPoints.Count; i < n; i++)
 				{
-					Handles.DotHandleCap(0, _self.wayPoints[i], Quaternion.identity, s, EventType.dragUpdated);
+					Handles.DotHandleCap(0, _self.wayPoints[i], Quaternion.identity, s, EventType.DragUpdated);
 				}
 				
 				HandleUtility.Repaint();

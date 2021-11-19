@@ -863,7 +863,7 @@ namespace Anthill.AI
 			
 			switch (aEvent.type)
 			{
-				case EventType.mouseDrag :
+				case EventType.MouseDrag :
 					if (aEvent.button == 0)
 					{
 						OnDrag(aEvent.delta);		

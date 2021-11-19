@@ -29,7 +29,7 @@ textureFileNames:
 - Assets/Textures/Effects/Pieces/Pieces01.png
 - Assets/Textures/Effects/Smoke/Smoke.png
 - Assets/Textures/Fragments/Fragments.png
-- Assets/Textures/Graphics.png
+- Assets\Textures/Graphics.png
 - Assets/Textures/Interface/Inventory/Inventory.png
 - Assets/Textures/Interface/Inventory/Masks.png
 - Assets/Textures/Location/Decoration/Decoration01.png

@@ -18,6 +18,7 @@ namespace Anthill.Core
 			_entities = new Dictionary<AntEntity, T>();
 			_pool = (aPool != null) ? aPool : new AntNodePool<T>();
 
+			//一般T都是某个Node类 比如HealthNode _component则是属性map
 			var type = typeof(T);
 			_components = type.GetProperties().ToDictionary(propInfo => propInfo.PropertyType, propInfo => propInfo);
 		}
@@ -61,6 +62,7 @@ namespace Anthill.Core
 
 		private void AddEntity(AntEntity aEntity)
 		{
+			//aEntity与该family做匹配检查 如果entity没有该组件 就不能加入这个family
 			foreach (var pair in _components)
 			{
 				if (!aEntity.Has(pair.Key))
@@ -68,15 +70,16 @@ namespace Anthill.Core
 					return;
 				}
 			}
-
+			//封装node节点 来包装组件对象
 			var node = _pool.Get();
 			_entities[aEntity] = node;
 
+			//用反射给node设置属性 node关心的组件被设置了上来
 			foreach (var pair in _components)
 			{
 				pair.Value.SetValue(node, aEntity.Get(pair.Key), null);
 			}
-
+			
 			_nodes.Add(node);
 		}
 
